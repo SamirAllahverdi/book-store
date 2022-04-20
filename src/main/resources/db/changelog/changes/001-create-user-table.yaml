@@ -1,0 +1,62 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20220420-01
+      author: samir
+      changes:
+        - createTable:
+            tableName: user
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: user_pk
+                    nullable: false
+              - column:
+                  name: email
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: firstName
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: lastName
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: password
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: datetime
+                  defaultValue: now()
+              - column:
+                  name: updated_at
+                  type: datetime
+#        - insert:
+#            tableName: user
+#            columns:
+#              - column:
+#                 name: password
+#                 value: "12345"
+#              - column:
+#                 name: firstName
+#                 value: "Samir"
+#              - column:
+#                  name: lastName
+#                  value: "Allahverdiyev"
+#              - column:
+#                  name: email
+#                  value: "smrallahverdieff@gmail.com"
+#              - column:
+#                  name: birth_date
+#                  value: "1998-03-31"
