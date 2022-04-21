@@ -19,7 +19,7 @@ public class PublisherController {
         return "";
     }
 
-    @PutMapping("/{id}/books")
+    @PatchMapping("/{id}/books")
     public String edit(@PathVariable String id){
         return "";
     }
