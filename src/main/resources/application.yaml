@@ -1,29 +1,8 @@
 spring:
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/bookStore?createDatabaseIfNotExist=true
-    username: root
-    password: 123
-  jpa:
-    hibernate:
-      naming:
-        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyHbmImpl
-        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
-  liquibase:
-    enabled: true
-
-security:
-  cors:
-    allowed-headers: '*'
-    allowed-origins: '*'
-    allowed-methods: '*'
-    exposed-headers: 'Authorization,Link'
-    allow-credentials: false
-    max-age: 1800
-  jwt:
-    secret-key: asdas89d99123kskadj12jedkaskjd1092jeasoijjd9081j2d0j90812je0918j2djkawjd120830ak191891i19ka
-    prefix: Bearer
-    expiration-with-minutes: 10
-
+  profiles:
+    include:
+      - security
+      - mail
+      - db
 
 logging.level.org.springframework.web: debug

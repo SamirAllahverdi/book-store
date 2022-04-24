@@ -36,9 +36,9 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
-                  name: status
-                  type: VARCHAR(30)
-                  defaultValue: DEACTIVE
+                  name: approve_email
+                  type: boolean
+                  defaultValue: "false"
               - column:
                   name: created_at
                   type: datetime
@@ -46,4 +46,3 @@ databaseChangeLog:
               - column:
                   name: updated_at
                   type: datetime
-#// TODO: add status or super user role

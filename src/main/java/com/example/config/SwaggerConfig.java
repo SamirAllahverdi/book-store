@@ -3,10 +3,8 @@ package com.example.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpHeaders;
-import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
-import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.ApiKey;
 import springfox.documentation.service.AuthorizationScope;
 import springfox.documentation.service.SecurityReference;
@@ -21,6 +19,9 @@ import java.util.List;
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
+
+
+
     //TODO: test
     @Bean
     public Docket docket() {

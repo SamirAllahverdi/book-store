@@ -3,7 +3,6 @@ package com.example.service.impl;
 import com.example.config.SecurityProperties;
 import com.example.service.JwtService;
 import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.JwtParser;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.RequiredArgsConstructor;
@@ -28,7 +27,7 @@ public class JwtServiceImpl implements JwtService {
         return Jwts.parserBuilder()
                 .setSigningKey(properties.getJwt().getKey())
                 .build()
-                .parseClaimsJws(token)
+                .parseClaimsJws(token)//TODO; jwt exporation catch
                 .getBody();
     }
 

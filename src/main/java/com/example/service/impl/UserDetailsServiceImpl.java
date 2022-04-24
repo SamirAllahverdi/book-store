@@ -1,6 +1,6 @@
 package com.example.service.impl;
 
-import com.example.exception.CustomNotFoundException;
+import com.example.exception.UserNotFoundException;
 import com.example.model.CustomSpringSecurityUser;
 import com.example.repository.UserRepo;
 import lombok.RequiredArgsConstructor;
@@ -19,8 +19,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        return userRepo.findByEmail(email)
+        return userRepo.findByEmailAndApproveEmailTrue(email)
                 .map(a -> new CustomSpringSecurityUser(a.getEmail(), a.getPassword(), a.getAuthorities()))
-                .orElseThrow(() -> new CustomNotFoundException(email));
+                .orElseThrow(() -> new UserNotFoundException(email));
     }
 }

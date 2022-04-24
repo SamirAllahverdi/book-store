@@ -27,9 +27,9 @@ databaseChangeLog:
                   name: page
                   type: bigint
               - column:
-                  name: status
-                  type: VARCHAR(30)
-                  defaultValue: ACTIVE
+                  name: is_deleted
+                  type: boolean
+                  defaultValue: 'false'
               - column:
                   name: created_at
                   type: datetime
@@ -37,8 +37,19 @@ databaseChangeLog:
                   name: updated_at
                   type: datetime
               - column:
+                  name: author_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
                   name: publisher_id
                   type: bigint
+        - addForeignKeyConstraint:
+            baseTableName: book
+            baseColumnNames: author_id
+            constraintName: book_author_fk
+            referencedTableName: author
+            referencedColumnNames: id
         - addForeignKeyConstraint:
             baseTableName: book
             baseColumnNames: publisher_id

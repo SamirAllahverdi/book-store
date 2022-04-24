@@ -2,6 +2,8 @@ plugins {
     id 'org.springframework.boot' version "$springBootVersion"
     id 'io.spring.dependency-management' version "$springDependencyManagerVersion"
     id 'java'
+    id 'pmd'
+    id 'checkstyle'
 }
 
 group = 'com.example'
@@ -24,16 +26,39 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
+
+    implementation "com.google.guava:guava:${guavaVersion}"
     implementation "io.jsonwebtoken:jjwt-api:${jjwtVersion}"
     implementation "io.jsonwebtoken:jjwt-impl:${jjwtVersion}"
     implementation "io.jsonwebtoken:jjwt-jackson:${jjwtVersion}"
     implementation "io.springfox:springfox-boot-starter:${swaggerVersion}"
+    compileOnly "org.mapstruct:mapstruct:$mapStructVersion"
+
     implementation 'mysql:mysql-connector-java'
     implementation 'org.liquibase:liquibase-core'
+
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
+    annotationProcessor "org.mapstruct:mapstruct-processor:$mapStructVersion"
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
+
+
+pmd {
+    toolVersion = "$pmdVersion"
+    ruleSets = []
+    ignoreFailures = true
+    ruleSetFiles = files("${rootProject.projectDir}/qa/pmd.xml")
+}
+
+checkstyle {
+    toolVersion = "$checkstyleVersion"
+    configFile = file("${rootProject.projectDir}/qa/checkstyle.xml")
+    ignoreFailures = true
+}
+
 
 tasks.named('test') {
     useJUnitPlatform()
@@ -41,5 +66,6 @@ tasks.named('test') {
 
 bootBuildImage {
     imageName = "book-store/${project.name}:${project.version}"
+//    TODO: complete dockre compose and this
     pullPolicy = "IF_NOT_PRESENT"
 }

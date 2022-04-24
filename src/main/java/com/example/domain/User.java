@@ -1,7 +1,6 @@
 package com.example.domain;
 
 
-import com.example.domain.enumeration.UserStatus;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,6 +11,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity(name = "user")
@@ -32,8 +32,7 @@ public class User {
 
     private String password;
 
-    @Enumerated(EnumType.STRING)
-    private UserStatus status;
+    private boolean approveEmail;
 
     @CreationTimestamp
     @Column(updatable = false)
@@ -48,4 +47,16 @@ public class User {
             inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")})
     private Set<Role> authorities = new HashSet<>();
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(email, user.email);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(email);
+    }
 }

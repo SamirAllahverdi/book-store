@@ -24,5 +24,4 @@ databaseChangeLog:
                   name: birth_date
                   type: date
 
-            #                  TODO smthng with about json colun suchja as genres or other.
             #                  TODO insert data.

@@ -5,7 +5,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.time.LocalDate;
 
 @Entity(name = "author")
@@ -19,4 +22,9 @@ public class Author {
     private String firstName;
     private String lastName;
     private LocalDate birthDate;
+
+
+    public Author(Long id) {
+        this.id = id;
+    }
 }

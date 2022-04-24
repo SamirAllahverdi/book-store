@@ -26,6 +26,7 @@ public class SecurityConfigurerAdapter extends WebSecurityConfigurerAdapter {
     private final SecurityProperties properties;
     private final JwtService jwtService;
 
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http

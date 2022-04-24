@@ -1,0 +1,12 @@
+security:
+  cors:
+    allowed-headers: '*'
+    allowed-origins: '*'
+    allowed-methods: '*'
+    exposed-headers: 'Authorization,Link'
+    allow-credentials: false
+    max-age: 1800
+  jwt:
+    secret-key: asdas89d99123kskadj12jedkaskjd1092jeasoijjd9081j2d0j90812je0918j2djkawjd120830ak191891i19ka
+    prefix: Bearer
+    expiration-with-minutes: 10

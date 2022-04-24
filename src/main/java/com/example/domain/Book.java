@@ -1,7 +1,6 @@
 package com.example.domain;
 
 
-import com.example.domain.enumeration.BookStatus;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,8 +10,6 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity(name = "book")
 @Data
@@ -26,8 +23,8 @@ public class Book {
     private String name;
     private String title;
     private int page;
-    @Enumerated(EnumType.STRING)
-    private BookStatus status;
+
+    private boolean isDeleted;
 
     @CreationTimestamp
     @Column(updatable = false)
@@ -37,10 +34,12 @@ public class Book {
     private LocalDateTime updatedAt;
 
     @JsonIgnore
-    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "book_author",
-            joinColumns = {@JoinColumn(name = "book_id", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "author_id", referencedColumnName = "id")})
-    private Set<Author> authors = new HashSet<>();
+    @OneToOne
+    @JoinColumn(name = "publisher_id")
+    private User publisher;
+
+    @JsonIgnore
+    @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)//TODO cascate
+    @JoinColumn(name = "author_id")
+    private Author author;
 }

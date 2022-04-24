@@ -3,11 +3,14 @@ package com.example.controller;
 import com.example.dto.LoginRequest;
 import com.example.dto.LoginResponse;
 import com.example.dto.RegistrationRequest;
+import com.example.dto.RegistrationResponse;
 import com.example.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
@@ -23,8 +26,8 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public String register(@RequestBody @Validated RegistrationRequest request) {
-        authService.register(request);
-        return "";
+    public ResponseEntity<RegistrationResponse> register(@RequestBody @Validated RegistrationRequest request) {
+        var response = authService.register(request);
+        return ResponseEntity.ok(response);
     }
 }
