@@ -18,18 +18,15 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import java.util.Collections;
 import java.util.List;
 
-
-
-
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
-
+    //TODO: test
     @Bean
     public Docket docket() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.any())
+                .apis(RequestHandlerSelectors.basePackage("com.example.controller"))
                 .paths(PathSelectors.any())
                 .build()
                 .securitySchemes(Collections.singletonList(apiKey()))
@@ -38,7 +35,7 @@ public class SwaggerConfig {
     }
 
     private ApiKey apiKey() {
-        return new ApiKey("JWT", HttpHeaders.AUTHORIZATION, "Header");
+        return new ApiKey(SecurityProperties.BEARER, HttpHeaders.AUTHORIZATION, "Header");
     }
 
     private SecurityContext securityContext() {
@@ -48,7 +45,7 @@ public class SwaggerConfig {
     }
 
     private List<SecurityReference> defaultAuth() {
-        return Collections.singletonList(new SecurityReference("JWT", getAuthorizationScopes()));
+        return Collections.singletonList(new SecurityReference(SecurityProperties.BEARER, getAuthorizationScopes()));
     }
 
     private AuthorizationScope[] getAuthorizationScopes() {

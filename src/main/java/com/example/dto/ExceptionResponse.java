@@ -5,11 +5,15 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.Instant;
+
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class LoginResponse {
-    private String email;
-    private String token;
+public class ExceptionResponse {
+    private Instant timestamp;
+    private String exception;
+    private String message;
+    private String path;
 }

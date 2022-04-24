@@ -21,12 +21,12 @@ databaseChangeLog:
                     nullable: false
                     unique: true
               - column:
-                  name: firstName
+                  name: first_name
                   type: VARCHAR(255)
                   constraints:
                     nullable: false
               - column:
-                  name: lastName
+                  name: last_name
                   type: VARCHAR(255)
                   constraints:
                     nullable: false
@@ -36,27 +36,14 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
+                  name: status
+                  type: VARCHAR(30)
+                  defaultValue: DEACTIVE
+              - column:
                   name: created_at
                   type: datetime
                   defaultValue: now()
               - column:
                   name: updated_at
                   type: datetime
-#        - insert:
-#            tableName: user
-#            columns:
-#              - column:
-#                 name: password
-#                 value: "12345"
-#              - column:
-#                 name: firstName
-#                 value: "Samir"
-#              - column:
-#                  name: lastName
-#                  value: "Allahverdiyev"
-#              - column:
-#                  name: email
-#                  value: "smrallahverdieff@gmail.com"
-#              - column:
-#                  name: birth_date
-#                  value: "1998-03-31"
+#// TODO: add status or super user role

@@ -10,11 +10,10 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/auth")
 @RequiredArgsConstructor
 public class AuthController {
 
-    //TODO: COmmonREquestFilter
+    //TODO: COmmo nREquestFilter
     private final AuthService authService;
 
     @PostMapping("/login")
@@ -28,5 +27,4 @@ public class AuthController {
         authService.register(request);
         return "";
     }
-
 }

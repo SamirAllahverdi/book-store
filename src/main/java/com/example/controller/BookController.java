@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class BookController {
 
-    private final BookService bookService;
+//    private final BookService bookService;
 
 //    @GetMapping
 //    public ResponseEntity<?> getAll(){

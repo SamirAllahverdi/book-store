@@ -1,0 +1,28 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20220423-08
+      author: samir
+      changes:
+        - createTable:
+            tableName: author
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: user_pk
+                    nullable: false
+              - column:
+                  name: first_name
+                  type: VARCHAR(255)
+              - column:
+                  name: last_name
+                  type: VARCHAR(255)
+              - column:
+                  name: birth_date
+                  type: date
+
+            #                  TODO smthng with about json colun suchja as genres or other.
+            #                  TODO insert data.

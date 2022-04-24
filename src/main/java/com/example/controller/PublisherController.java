@@ -14,7 +14,7 @@ public class PublisherController {
         return "";
     }
 
-    @PostMapping("/books")
+    @PostMapping("/{id}/books")
     public String add(@PathVariable String id){
         return "";
     }

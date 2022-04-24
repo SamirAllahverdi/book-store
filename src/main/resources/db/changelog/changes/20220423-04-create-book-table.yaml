@@ -1,0 +1,47 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20220423-04
+      author: samir
+      changes:
+        - createTable:
+            tableName: book
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: book_pk
+                    nullable: false
+              - column:
+                  name: name
+                  type: VARCHAR(100)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: title
+                  type: VARCHAR(255)
+              - column:
+                  name: page
+                  type: bigint
+              - column:
+                  name: status
+                  type: VARCHAR(30)
+                  defaultValue: ACTIVE
+              - column:
+                  name: created_at
+                  type: datetime
+              - column:
+                  name: updated_at
+                  type: datetime
+              - column:
+                  name: publisher_id
+                  type: bigint
+        - addForeignKeyConstraint:
+            baseTableName: book
+            baseColumnNames: publisher_id
+            constraintName: book_user_fk
+            referencedTableName: user
+            referencedColumnNames: id
