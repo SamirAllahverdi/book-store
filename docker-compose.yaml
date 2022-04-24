@@ -1,0 +1,14 @@
+version: '3.7'
+
+services:
+  book-store:
+    image: book-store/book-store:1.0-7d7e1a8
+    ports:
+      - "8080:8080"
+    networks:
+      - book-store-network
+    depends_on:
+      - mysql
+
+networks:
+  book-store-network:
