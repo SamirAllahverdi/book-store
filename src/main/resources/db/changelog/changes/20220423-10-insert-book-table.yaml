@@ -1,0 +1,41 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20220423-10
+      author: samir
+      changes:
+        - insert:
+            tableName: book
+            columns:
+              - column:
+                  name: name
+                  value: "Crime and Punishment"
+              - column:
+                  name: title
+                  value: "Crime and Punishment is a novel by the Russian author Fyodor Dostoevsky"
+              - column:
+                  name: page
+                  value: "700"
+              - column:
+                  name: author_id
+                  value: "1"
+              - column:
+                  name: publisher_id
+                  value: "1"
+        - insert:
+            tableName: book
+            columns:
+              - column:
+                  name: name
+                  value: "Anna Karenina"
+              - column:
+                  name: title
+                  value: "Anna Karenina is a novel by the Russian author Leo Tolstoy"
+              - column:
+                  name: page
+                  value: "864"
+              - column:
+                  name: author_id
+                  value: "2"
+              - column:
+                  name: publisher_id
+                  value: "1"

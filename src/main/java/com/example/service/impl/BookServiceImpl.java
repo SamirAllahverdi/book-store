@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
 @Service
 @RequiredArgsConstructor
 public class BookServiceImpl implements BookService {
@@ -20,7 +21,7 @@ public class BookServiceImpl implements BookService {
     private final BookRepo bookRepo;
 
     public BookResponse get(Long id) {
-        return bookRepo.findById(id)
+        return bookRepo.findBookById(id)
                 .map(BookMapper.INSTANCE::toDto)
                 .orElseThrow(() -> new BookNotFoundException(id));
     }

@@ -19,5 +19,5 @@ public class BookResponse {
     private int page;
     @JsonFormat(pattern = "MMM. d, yyyy HH:mm")
     private LocalDateTime createdAt;
-    private List<AuthorResponse> authors;
+    private AuthorResponse author;
 }

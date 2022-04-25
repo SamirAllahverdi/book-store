@@ -1,0 +1,23 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20220423-09
+      author: samir
+      changes:
+        - insert:
+            tableName: author
+            columns:
+              - column:
+                  name: full_name
+                  value: "Fyodor Dostoyevsky"
+              - column:
+                  name: birth_date
+                  value: "1821-11-11"
+        - insert:
+            tableName: author
+            columns:
+              - column:
+                  name: full_name
+                  value: "Leo Tolstoy"
+              - column:
+                  name: birth_date
+                  value: "1828-09-09"

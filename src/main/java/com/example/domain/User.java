@@ -2,11 +2,14 @@ package com.example.domain;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import liquibase.pro.packaged.B;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -16,9 +19,15 @@ import java.util.Set;
 
 @Entity(name = "user")
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class User {
+
+    public static void main(String[] args) {
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(10);
+        System.out.println(bCryptPasswordEncoder.encode("Nazim12345"));
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

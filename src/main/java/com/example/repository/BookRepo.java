@@ -15,7 +15,7 @@ import java.util.Optional;
 public interface BookRepo extends JpaRepository<Book, Long> {
 
     @Query("select b from book b where b.id = :id and b.isDeleted=false")
-    Optional<Book> findById(@Param("id") long id);
+    Optional<Book> findBookById(@Param("id") long id);
 
     @Query("select b from book b where b.isDeleted=false " +
             "and (:#{#filter.name} is null or b.name like %:#{#filter.name}% )" +

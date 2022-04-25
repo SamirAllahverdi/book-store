@@ -9,7 +9,14 @@ databaseChangeLog:
       file: db/changelog/changes/20220423-04-create-author-table.yaml
   - include:
       file: db/changelog/changes/20220423-05-create-book-table.yaml
-
-
-#      //TODO: meta data
+  - include:
+      file: db/changelog/changes/20220423-06-insert-role-table.yaml
+  - include:
+      file: db/changelog/changes/20220423-07-insert-user-table.yaml
+  - include:
+      file: db/changelog/changes/20220423-08-insert-user-role-table.yaml
+  - include:
+      file: db/changelog/changes/20220423-09-insert-author-table.yaml
+  - include:
+      file: db/changelog/changes/20220423-10-insert-book-table.yaml
 

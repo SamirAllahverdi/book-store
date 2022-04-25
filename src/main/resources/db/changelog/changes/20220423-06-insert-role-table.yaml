@@ -1,0 +1,23 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20220423-06
+      author: samir
+      changes:
+        - insert:
+            tableName: role
+            columns:
+              - column:
+                  name: id
+                  value: "1"
+              - column:
+                  name: name
+                  value: "USER"
+        - insert:
+            tableName: role
+            columns:
+              - column:
+                  name: id
+                  value: "2"
+              - column:
+                  name: name
+                  value: "PUBLISHER"

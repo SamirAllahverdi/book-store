@@ -31,6 +31,4 @@ public class BookController {
         var response = bookService.getAll(filter);
         return ResponseEntity.ok(response);
     }
-
-
 }

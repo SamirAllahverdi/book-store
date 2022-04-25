@@ -1,0 +1,41 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20220423-07
+      author: samir
+      changes:
+        - insert:
+            tableName: user
+            columns:
+              - column:
+                  name: email
+                  value: "a_nazim2007@mail.ru"
+              - column:
+                  name: first_name
+                  value: "Nazim"
+              - column:
+                  name: last_name
+                  value: "Allahverdiyev"
+              - column:
+                  name: approve_email
+                  valueBoolean: true
+              - column:
+                  name: password
+                  value: "$2a$10$AHQKW8HSgNR7r1Y/dBlysep/Zex04fSh/3Lq/IAnoWpT98Z/nlBAS" #Nazim12345
+        - insert:
+            tableName: user
+            columns:
+              - column:
+                  name: email
+                  value: "smrallahverdieff@gmail.com"
+              - column:
+                  name: first_name
+                  value: 'Samir'
+              - column:
+                  name: last_name
+                  value: "Allahverdiyev"
+              - column:
+                  name: approve_email
+                  valueBoolean: true
+              - column:
+                  name: password
+                  value: "$2a$10$HBvPmYDdt0x/ngFA0E/eG.E3BTc7mxtw74RAjoeIUKSfK/UL7bJJG" #Samir12345

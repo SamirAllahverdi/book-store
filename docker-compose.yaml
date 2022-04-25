@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   mysql:
-    image: mysql:5.7
+    image: mysql:8.0.28
     environment:
       MYSQL_DATABASE: 'bookStore'
       MYSQL_USER: 'samir'
@@ -15,7 +15,7 @@ services:
     volumes:
       - db-data:/var/lib/mysql
   book-store:
-    image: book-store/book-store:1.0-3b59ff3
+    image: book-store/book-store:1.0-
     ports:
       - "8080:8080"
     networks:
@@ -24,7 +24,7 @@ services:
       - mysql
 
 volumes:
-    db-data:
+  db-data:
 
 networks:
   book-store-network:

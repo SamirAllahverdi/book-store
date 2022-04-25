@@ -35,7 +35,7 @@ dependencies {
     implementation "io.springfox:springfox-boot-starter:${swaggerVersion}"
     compileOnly "org.mapstruct:mapstruct:$mapStructVersion"
 
-    implementation 'mysql:mysql-connector-java'
+    implementation 'mysql:mysql-connector-java:8.0.28'
     implementation 'org.liquibase:liquibase-core'
 
     compileOnly 'org.projectlombok:lombok'
@@ -66,6 +66,5 @@ tasks.named('test') {
 
 bootBuildImage {
     imageName = "book-store/${project.name}:${project.version}"
-//    TODO: complete dockre compose and this
     pullPolicy = "IF_NOT_PRESENT"
 }
