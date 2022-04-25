@@ -18,7 +18,7 @@ import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
-public class AuthenticationCreator { //TODO: rename
+public class AuthenticationUtil {
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
     private final JwtService jwtService;
     private final UserRepo userRepo;

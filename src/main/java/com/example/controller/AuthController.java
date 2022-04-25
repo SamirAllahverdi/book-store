@@ -1,22 +1,16 @@
 package com.example.controller;
 
-import com.example.dto.LoginRequest;
-import com.example.dto.LoginResponse;
-import com.example.dto.RegistrationRequest;
-import com.example.dto.RegistrationResponse;
+import com.example.dto.*;
 import com.example.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
 public class AuthController {
 
-    //TODO: COmmo nREquestFilter
     private final AuthService authService;
 
     @PostMapping("/login")
@@ -30,4 +24,11 @@ public class AuthController {
         var response = authService.register(request);
         return ResponseEntity.ok(response);
     }
+
+    @GetMapping("/confirm")
+    public ResponseEntity<ConfirmationResponse> confirmEmail(@RequestParam String confirmationKey) {
+        var response = authService.confirm(confirmationKey);
+        return ResponseEntity.ok(response);
+    }
+
 }

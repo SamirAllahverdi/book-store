@@ -12,4 +12,5 @@ public class BookFilter extends DefaultFilter{
     private String name;
     private String title;
     private Integer bookPage;
+    private Long authorId;
 }

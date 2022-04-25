@@ -10,6 +10,9 @@ import java.util.Locale;
 
 @Configuration
 public class LocaleMessageConfig {
+    public static final String CONFIRMATION_MAIL_SUBJECT = "confirmation-mail-subject";
+    public static final String CONFIRMATION_MAIL_TEXT = "confirmation-mail-text";
+    public static final String CONFIRMATION_RESPONSE = "confirmation-response";
 
     @Bean
     public ResourceBundleMessageSource messageSource() {

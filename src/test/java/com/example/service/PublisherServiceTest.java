@@ -3,13 +3,16 @@ package com.example.service;
 import com.example.domain.Author;
 import com.example.domain.Book;
 import com.example.domain.User;
-import com.example.dto.*;
+import com.example.dto.AuthorRequest;
+import com.example.dto.AuthorResponse;
+import com.example.dto.BookRequest;
+import com.example.dto.BookResponse;
 import com.example.exception.AlreadyExistException;
 import com.example.exception.BookNotFoundException;
 import com.example.repository.AuthorRepo;
 import com.example.repository.BookRepo;
 import com.example.service.impl.PublisherServiceImpl;
-import com.example.util.AuthenticationCreator;
+import com.example.util.AuthenticationUtil;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -17,7 +20,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -32,7 +34,7 @@ public class PublisherServiceTest {
     @Mock
     private BookRepo bookRepo;
     @Mock
-    private AuthenticationCreator authenticationCreator;
+    private AuthenticationUtil authenticationUtil;
     @Mock
     private AuthorRepo authorRepo;
     private PublisherService publisherService;
@@ -42,7 +44,7 @@ public class PublisherServiceTest {
 
     @BeforeEach
     void init() {
-        publisherService = new PublisherServiceImpl(bookRepo, authenticationCreator, authorRepo);
+        publisherService = new PublisherServiceImpl(bookRepo, authenticationUtil, authorRepo);
 
         LocalDate authorBirtDate = LocalDate.now();
 
@@ -57,7 +59,6 @@ public class PublisherServiceTest {
                 .build();
 
         DUMMY_BOOK = Book.builder()
-//                .id(1L)
                 .name("Crime and Punishment")
                 .page(700)
                 .title("Crime and Punishment is a novel by the Russian author Fyodor Dostoevsky")
@@ -81,6 +82,7 @@ public class PublisherServiceTest {
     @Test
     public void testAddSuccess() {
         when(bookRepo.save(DUMMY_BOOK)).thenReturn(DUMMY_BOOK);
+        when(authenticationUtil.getCurrentUser()).thenReturn(DUMMY_USER);
         when(authorRepo.findByFullName(DUMMY_BOOK_REQUEST.getAuthor().getFullName())).thenReturn(Optional.ofNullable(DUMMY_AUTHOR));
 
         Long bookId = publisherService.add(DUMMY_BOOK_REQUEST);
@@ -98,10 +100,10 @@ public class PublisherServiceTest {
     @Test
     public void testEditSuccess() {
         long bookId = 1L;
-
         when(bookRepo.findBookById(bookId)).thenReturn(Optional.ofNullable(DUMMY_BOOK));
-        when(bookRepo.save(DUMMY_BOOK)).thenReturn(DUMMY_BOOK); //TODO:
-        when(authenticationCreator.getCurrentUser()).thenReturn(DUMMY_USER); //TODO:
+        when(authenticationUtil.getCurrentUser()).thenReturn(DUMMY_USER);
+        when(bookRepo.save(DUMMY_BOOK)).thenReturn(DUMMY_BOOK);
+        when(authorRepo.findByFullName(DUMMY_AUTHOR.getFullName())).thenReturn(Optional.ofNullable(DUMMY_AUTHOR));
 
         BookResponse bookResponse = publisherService.edit(bookId, DUMMY_BOOK_REQUEST);
 

@@ -1,0 +1,36 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20220423-11
+      author: samir
+      changes:
+        - createTable:
+            tableName: email_confirmation
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: email_confirmation_pk
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: confirmation_key
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: datetime
+                  defaultValue: now()
+        - addForeignKeyConstraint:
+            baseTableName: email_confirmation
+            baseColumnNames: user_id
+            constraintName: email_confirmation_user_fk
+            referencedTableName: user
+            referencedColumnNames: id

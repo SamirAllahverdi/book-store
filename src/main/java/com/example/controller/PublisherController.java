@@ -35,8 +35,6 @@ public class PublisherController {
         publisherService.delete(bookId);
         return ResponseEntity.noContent().build();
     }
-
-    //TODO: logging
     public static <T> URI getLocation(T id) {
         return ServletUriComponentsBuilder
                 .fromCurrentRequest()

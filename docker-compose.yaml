@@ -8,23 +8,10 @@ services:
       MYSQL_USER: 'samir'
       MYSQL_PASSWORD: '123'
       MYSQL_ROOT_PASSWORD: '123'
-    networks:
-      - book-store-network
     ports:
-      - '3306:3306'
+      - "3306:3306"
     volumes:
       - db-data:/var/lib/mysql
-  book-store:
-    image: book-store/book-store:1.0-
-    ports:
-      - "8080:8080"
-    networks:
-      - book-store-network
-    depends_on:
-      - mysql
 
 volumes:
   db-data:
-
-networks:
-  book-store-network:

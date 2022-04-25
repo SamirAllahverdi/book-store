@@ -1,5 +1,6 @@
 package com.example.dto;
 
+import com.example.domain.enumeration.UserRole;
 import lombok.*;
 
 import javax.validation.constraints.Email;
@@ -17,6 +18,5 @@ public class RegistrationRequest {
     private String password;
     private String firstName;
     private String lastName;
-    @NotEmpty
-    private String role;
+    private UserRole role;
 }

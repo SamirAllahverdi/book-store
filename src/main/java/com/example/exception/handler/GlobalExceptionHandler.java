@@ -1,10 +1,7 @@
 package com.example.exception.handler;
 
 import com.example.dto.ExceptionResponse;
-import com.example.exception.AlreadyExistException;
-import com.example.exception.BookNotFoundException;
-import com.example.exception.UserNotFoundException;
-import com.example.exception.WrongPublisherException;
+import com.example.exception.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
@@ -25,6 +22,22 @@ import java.util.stream.Collectors;
 @ControllerAdvice
 @RequiredArgsConstructor
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
+
+    @ExceptionHandler(InvalidConfirmationKeyException.class)
+    public final ResponseEntity<ExceptionResponse> handleInvalidConfirmationKeyException(InvalidConfirmationKeyException exception,
+                                                                                         WebRequest request) {
+
+        ExceptionResponse response = ExceptionResponse.builder()
+                .timestamp(Instant.now())
+                .exception(exception.getClass().getSimpleName())
+                .message(exception.getMessage())
+                .path(request.getDescription(false))
+                .build();
+
+        log.error("{}", response);
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(response);
+    }
 
     @ExceptionHandler(BookNotFoundException.class)
     public final ResponseEntity<ExceptionResponse> handleBookNotFoundException(BookNotFoundException exception,

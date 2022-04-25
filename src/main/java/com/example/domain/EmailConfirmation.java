@@ -7,41 +7,29 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Entity(name = "book")
+@Entity(name = "email_confirmation")
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Book {
+public class EmailConfirmation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
-    private String title;
-    private int page;
 
-    private boolean isDeleted;
+    private String confirmationKey;
 
     @CreationTimestamp
     @Column(updatable = false)
     private LocalDateTime createdAt;
 
-    @UpdateTimestamp
-    private LocalDateTime updatedAt;
-
     @JsonIgnore
     @OneToOne
-    @JoinColumn(name = "publisher_id")
-    private User publisher;
-
-    @JsonIgnore
-    @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
-    @JoinColumn(name = "author_id")
-    private Author author;
+    @JoinColumn(name = "user_id")
+    private User user;
 }

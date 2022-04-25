@@ -1,8 +1,18 @@
 spring:
+  application:
+    name: book-store
   profiles:
     include:
       - security
       - mail
       - db
 
-logging.level.org.springframework.web: debug
+logging:
+  level:
+    org:
+      springframework:
+        web:
+          filter:
+            CommonsRequestLoggingFilter: DEBUG
+server:
+  port: 8080

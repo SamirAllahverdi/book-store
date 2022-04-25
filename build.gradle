@@ -35,7 +35,7 @@ dependencies {
     implementation "io.springfox:springfox-boot-starter:${swaggerVersion}"
     compileOnly "org.mapstruct:mapstruct:$mapStructVersion"
 
-    implementation 'mysql:mysql-connector-java:8.0.28'
+    implementation "mysql:mysql-connector-java:$mysqlVersion"
     implementation 'org.liquibase:liquibase-core'
 
     compileOnly 'org.projectlombok:lombok'

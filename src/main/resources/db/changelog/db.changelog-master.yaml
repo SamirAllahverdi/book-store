@@ -19,4 +19,6 @@ databaseChangeLog:
       file: db/changelog/changes/20220423-09-insert-author-table.yaml
   - include:
       file: db/changelog/changes/20220423-10-insert-book-table.yaml
+  - include:
+      file: db/changelog/changes/20220423-11-create-email-confirmation-table.yaml
 

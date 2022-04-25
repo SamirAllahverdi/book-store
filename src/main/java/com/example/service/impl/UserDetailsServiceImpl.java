@@ -20,7 +20,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         return userRepo.findByEmailAndApproveEmailTrue(email)
-                .map(a -> new CustomSpringSecurityUser(a.getEmail(), a.getPassword(), a.getAuthorities()))
+                .map(a -> new CustomSpringSecurityUser(a.getEmail(), a.getPassword(), a.getRoles()))
                 .orElseThrow(() -> new UserNotFoundException(email));
     }
 }
