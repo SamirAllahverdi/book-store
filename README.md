@@ -18,3 +18,7 @@
 #For running program locally, write _docker-compose up_ to terminal in project root directory.
 #Then start spring boot application.
 
+Accounts:
+USER:  smrallahverdieff@gmail.com Samir12345
+PUBLISHER:  a_nazim2007@mail.ru Nazim12345
+
