@@ -2,8 +2,8 @@ spring:
   mail:
     host: smtp.yandex.com
     port: 587
-    username: samir.a@crocusoft.com
-    password: gqfupaqqmysohzzs
+    username: 
+    password: 
     properties:
       mail:
         smtp:
